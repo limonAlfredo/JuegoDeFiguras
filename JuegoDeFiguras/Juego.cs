@@ -44,6 +44,13 @@ namespace JuegoDeFiguras
         #endregion
 
         #region MÉTODOS
+
+        public void BorrarFiguras(List<Figuras> figurasAEliminar){
+            foreach (Figura figuraElim in figurasAEliminar)
+                {
+                    this.Figuras.Remove(figuraElim);
+                }
+        }
         public void Actualizar(int tiempo)
         {
             try
@@ -63,42 +70,36 @@ namespace JuegoDeFiguras
                 double Dx = 0, Dy = 0;
                 List<Figura> figurasAEliminar = new List<Figura>();                
 
-                foreach(Figura figura in this.Figuras)
+                foreach(Figura fig in this.Figuras)
                 {
                     // DETERMINAR QUIEN ESTA A LA IZQUIERDA Y DERECHA
-                    if(figura.X <= this.Jugador.X)
-                        Dx = Math.Abs(figura.X - (this.Jugador.X + this.Jugador.Ancho));
+                    if(fig.X <= this.Jugador.X)
+                        Dx = Math.Abs(fig.X - (this.Jugador.X + this.Jugador.Ancho));
                     else
-                        Dx = Math.Abs(this.Jugador.X - (figura.X + figura.Ancho));
+                        Dx = Math.Abs(this.Jugador.X - (fig.X + fig.Ancho));
 
-                    Dy = Math.Abs(figura.Y - (this.Jugador.Y + this.Jugador.Alto));
+                    Dy = Math.Abs(fig.Y - (this.Jugador.Y + this.Jugador.Alto));
 
-                    if (Dx < figura.Ancho + this.Jugador.Ancho &&
-                        Dy < figura.Alto + this.Jugador.Alto)
+                    if (Dx < fig.Ancho + this.Jugador.Ancho &&
+                        Dy < fig.Alto + this.Jugador.Alto)
                     { // HAY COLISIÓN
-                        figurasAEliminar.Add(figura);
+                        figurasAEliminar.Add(fig);
                         this.Contador++;
                     }
                 }
                 // ELIMINAR FIGURAS ATRAPADAS
-                foreach (Figura figuraElim in figurasAEliminar)
-                {
-                    this.Figuras.Remove(figuraElim);
-                }
+                BorrarFiguras(figurasAEliminar);
                 #endregion
 
                 // ELIMINAR FIGURAS QUE DESAPARECEN POR DEBAJO
                 figurasAEliminar = new List<Figura>();
-                foreach (Figura figura in this.Figuras)
+                foreach (Figura figur in this.Figuras)
                 {
                     figura.Y += valorDeMovimientoEnY;
                     if (figura.Y > this.AltoDibujo)
-                        figurasAEliminar.Add(figura);
+                        figurasAEliminar.Add(figur);
                 }
-                foreach(Figura figAEliminar in figurasAEliminar)
-                {
-                    this.Figuras.Remove(figAEliminar);
-                }
+                BorrarFiguras(figurasAEliminar);
                 
             }
             catch (Exception ex)
@@ -120,9 +121,9 @@ namespace JuegoDeFiguras
             {
                 
                 // DIBUJAR FIGURAS
-                foreach(Figura figur in this.Figuras)
+                foreach(Figura figu in this.Figuras)
                 {
-                    figur.Dibujar(ref graphics);
+                    figu.Dibujar(ref graphics);
                 }
                 
 

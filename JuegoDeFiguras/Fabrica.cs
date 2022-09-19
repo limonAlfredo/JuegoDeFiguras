@@ -84,8 +84,9 @@ namespace JuegoDeFiguras
                     figura.Ancho = ancho;
                     figura.Alto = alto;
 
-                    if (figura != null)
+                    if (figura != null){
                         this.ContenedorFiguras.Enqueue(figura);
+                    }
                 }
                 Thread.Sleep(500);
                 figura = null;
@@ -130,11 +131,7 @@ namespace JuegoDeFiguras
         {
             int valor = randomColorRGB.Next(0, 255);
 
-            int R = randomColorRGB.Next(0, 255);
-            int G = randomColorRGB.Next(0, 255);
-            int B = randomColorRGB.Next(0, 255);
-
-            return Color.FromArgb(R, G, B);
+            return Color.FromArgb(randomColorRGB.Next(0, 255), randomColorRGB.Next(0, 255), randomColorRGB.Next(0, 255));
 
             /*
             //int valor = new Random().Next(0, 11);
@@ -245,7 +242,8 @@ namespace JuegoDeFiguras
             var task = new Task<int>(() => {
                 while (true)
                 {
-                    if (this.ContenedorFiguras.Count > 0)
+                    int contador = 0;
+                    if (this.ContenedorFiguras.Count > contador)
                     {
                         Figura figura = this.ContenedorFiguras.Dequeue();
                         this.Juego.Figuras.Add(figura);
