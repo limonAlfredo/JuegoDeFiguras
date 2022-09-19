@@ -233,8 +233,8 @@ namespace JuegoDeFiguras
                 return 0;
             });
             task.Start();
-            int valReturn = await task;
-            return valReturn;
+            int valor = await task;
+            return valor ;
 
         }
         public async Task<int> RecolectarObjetos()
