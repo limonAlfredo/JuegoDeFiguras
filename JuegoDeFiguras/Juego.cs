@@ -81,9 +81,9 @@ namespace JuegoDeFiguras
                     }
                 }
                 // ELIMINAR FIGURAS ATRAPADAS
-                foreach (Figura figuraAEliminar in figurasAEliminar)
+                foreach (Figura figuraElim in figurasAEliminar)
                 {
-                    this.Figuras.Remove(figuraAEliminar);
+                    this.Figuras.Remove(figuraElim);
                 }
                 #endregion
 
@@ -95,9 +95,9 @@ namespace JuegoDeFiguras
                     if (figura.Y > this.AltoDibujo)
                         figurasAEliminar.Add(figura);
                 }
-                foreach(Figura figuraAEliminar in figurasAEliminar)
+                foreach(Figura figAEliminar in figurasAEliminar)
                 {
-                    this.Figuras.Remove(figuraAEliminar);
+                    this.Figuras.Remove(figAEliminar);
                 }
                 
             }
@@ -120,9 +120,9 @@ namespace JuegoDeFiguras
             {
                 
                 // DIBUJAR FIGURAS
-                foreach(Figura figura in this.Figuras)
+                foreach(Figura figur in this.Figuras)
                 {
-                    figura.Dibujar(ref graphics);
+                    figur.Dibujar(ref graphics);
                 }
                 
 
