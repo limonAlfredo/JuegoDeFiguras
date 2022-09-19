@@ -45,7 +45,7 @@ namespace JuegoDeFiguras
 
         #region MÉTODOS
 
-        public void BorrarFiguras(List<Figuras> figurasAEliminar){
+        public void BorrarFiguras(List<Figura> figurasAEliminar){
             foreach (Figura figuraElim in figurasAEliminar)
                 {
                     this.Figuras.Remove(figuraElim);
@@ -95,8 +95,8 @@ namespace JuegoDeFiguras
                 figurasAEliminar = new List<Figura>();
                 foreach (Figura figur in this.Figuras)
                 {
-                    figura.Y += valorDeMovimientoEnY;
-                    if (figura.Y > this.AltoDibujo)
+                    figur.Y += valorDeMovimientoEnY;
+                    if (figur.Y > this.AltoDibujo)
                         figurasAEliminar.Add(figur);
                 }
                 BorrarFiguras(figurasAEliminar);
